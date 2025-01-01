@@ -1,8 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import AppName from "./components/AppName";
-import AddTodo from "./components/AddTodo";
+import AppName from "./Components/AppName";
+import AddTodo from "./Components/AddTodo";
 import TodoItem from "./Components/TodoItem";
 import TodoItems from "./Components/TodoItems";
+import WelcomeMessage from "./Components/WelcomeMessage";
 
 import "./App.css";
 import { useState } from "react";
@@ -20,11 +21,20 @@ function App() {
     setTodoItems(newTodoItems);
   };
 
+  const handleDeleteItem = (todoItemName) => {
+    const newTodoItems = todoItems.filter((item) => item.name != todoItemName);
+    setTodoItems(newTodoItems);
+  };
+
   return (
     <center className="todo-container">
       <AppName></AppName>
       <AddTodo onNewItem={handleNewItem}></AddTodo>
-      <TodoItems todoItems={todoItems}></TodoItems>
+      {todoItems.length === 0 && <WelcomeMessage></WelcomeMessage>}
+      <TodoItems
+        todoItems={todoItems}
+        onDeleteClick={handleDeleteItem}
+      ></TodoItems>
     </center>
   );
 }
