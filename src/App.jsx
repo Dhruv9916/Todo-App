@@ -9,7 +9,7 @@ import "./App.css";
 import { useState } from "react";
 function App() {
   const initialTodoItems = [
-    { name: "Buy Mik", date: "4/2/23" },
+    { name: "Buy Milk", date: "4/2/23" },
     { name: "Ghee", date: "04/2/23" },
     { name: "Curd", date: "04/2/23" },
   ];
